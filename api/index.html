@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant API Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Restaurant API Documentation</h1>
+    <table>
+        <tr>
+            <th>HTTP Method</th>
+            <th>Endpoint</th>
+            <th>Description</th>
+            <th>Authentication</th>
+            <th>Request Body</th>
+            <th>Response</th>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td>/auth/signup</td>
+            <td>Create a new user account</td>
+            <td>No</td>
+            <td>User details (JSON)</td>
+            <td>{"message": "User signed up successfully", "user": { "id": 1, "username": "example", "role": "user", "bank": 0 }}</td>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td>/auth/login</td>
+            <td>Login an existing user</td>
+            <td>No</td>
+            <td>User credentials (JSON)</td>
+            <td>{"token": "JWT token"}</td>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td>/admin/menu</td>
+            <td>Add item to menu</td>
+            <td>Yes (Admin)</td>
+            <td>{"token": "JWT token", "item": { "name": "ItemName", "price": 10 }}</td>
+            <td>{"success": "Item added"}</td>
+        </tr>
+        <tr>
+            <td>DELETE</td>
+            <td>/admin/menu/{id}</td>
+            <td>Remove item from menu</td>
+            <td>Yes (Admin)</td>
+            <td>{"token": "JWT token"}</td>
+            <td>{"success": "Item removed"}</td>
+        </tr>
+        <tr>
+            <td>PATCH</td>
+            <td>/admin/{id}</td>
+            <td>Update order status</td>
+            <td>Yes (Admin)</td>
+            <td>{"token": "JWT token"}</td>
+            <td>http code 200 if success and 500 otherwise</td>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td>/menu/{id}</td>
+            <td>Place order</td>
+            <td>Yes (User)</td>
+            <td>{"token": "JWT token", "price": 10}</td>
+            <td>{"error": "order placed successfully"}</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/menu</td>
+            <td>Show menu</td>
+            <td>No</td>
+            <td></td>
+            <td>[{"id": 1, "name": "ItemName", "price": 10}, {...}]</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/admin/revenue</td>
+            <td>Get revenue</td>
+            <td>Yes (Admin)</td>
+            <td>{"token": "JWT token"}</td>
+            <td>{"items_sold": 10, "revenue": 100}</td>
+        </tr>
+    </table>
+</body>
+</html>
